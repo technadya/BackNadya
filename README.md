@@ -14,6 +14,9 @@ This project demonstrates a simple PHP backdoor for educational purposes. It is 
 
 **Important: Using this backdoor on systems you do not own or without explicit permission is illegal and unethical. This tool should never be used in real-world unauthorized attacks.**
 
+## Usage
+Press F8 to show output
+
 ## Purpose
 
 - **Education**: To teach about vulnerabilities, exploitation, and prevention mechanisms in web applications.
