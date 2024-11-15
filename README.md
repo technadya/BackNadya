@@ -6,7 +6,7 @@
 _/____/___/____|_(____/___/____\___/___|/____/____|_/____/______|_/____/____|_
                                                                  /            
                                                              (_ /         </pre>
-# PHP Mini Backdoor - Cybersecurity Learning Tool
+# PHP Mini Backdoor
 
 ## Description
 
