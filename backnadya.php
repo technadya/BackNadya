@@ -115,7 +115,12 @@
         }
 
         function get_file_permissions($file) {
-            return substr(sprintf('%o', fileperms($file)), -4);
+            // Mengecek apakah file ada sebelum mencoba mendapatkan permissions
+            if (file_exists($file)) {
+                return substr(sprintf('%o', fileperms($file)), -4);
+            } else {
+                return 'File deleted';
+            }
         }
 
         function is_writable_permission($file) {
@@ -154,10 +159,14 @@
         // Handle file delete
         if (isset($_POST['delete_file'])) {
             $file_path = $_POST['delete_file'];
-            if (unlink($file_path)) {
-                $delete_message = 'File deleted successfully.';
+            if (file_exists($file_path)) {
+                if (unlink($file_path)) {
+                    $delete_message = 'File deleted successfully.';
+                } else {
+                    $delete_message = 'Failed to delete the file.';
+                }
             } else {
-                $delete_message = 'Failed to delete the file.';
+                $delete_message = 'File does not exist.';
             }
         }
 
