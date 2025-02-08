@@ -1,3 +1,4 @@
+![image](https://github.com/user-attachments/assets/0226cb21-0710-4a82-af74-872a7eaf4324)
 # Backnadya Cookie Setter
 
 This PHP script provides a mechanism to set a cookie (`current_cache`) based on user input and then use this value to load remote PHP files. It's useful for testing and interacting with remote content securely via HTTPS.
